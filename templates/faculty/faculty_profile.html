@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body{margin:0px}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-image: linear-gradient(to right, #1fd40fe2, rgba(255,222,0,1));
+  height: 50px;}
+li {
+  float: left;
+  border-right:1px solid #bbb;}
+li a {
+  font-size: 20px;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 16px 16px;
+  text-decoration: none;}
+li a:hover:not(.active){background-color: rgb(229, 255, 0);}
+.container{
+width:1000px;
+height:800px;
+margin-top: 100px;
+margin-left:200px;
+border-radius: 6px solid black;
+}
+.avatar {
+  vertical-align: middle;
+  text-align: center;
+  width: 200px;
+  height: 150px;
+  border-radius: 50%;
+  margin-left: 350px;
+}
+.col-25 {margin-left: 10%;
+  float: left;
+  width: 30%;
+  margin-top: 0px;
+}
+
+.col-75 {margin-left: 10%;
+  float: left;
+  width: 30%;
+  margin-top: 0px;
+}
+
+.col-100 {margin-left: 10%;
+  float: left;
+  width: 75%;
+  margin-top: 0px;}
+  .address{width: 90%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;}
+  .email{width: 90%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;}
+input[type=text] {
+  width: 90%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+input[type="contact"]{width:90%;
+padding:12px;
+border:1px solid #ccc;
+border-radius: 4px;}
+ .Edit{
+     background-color: bisque;
+     font-size: 25px;
+     height:60px;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.save{
+     background-color:rgb(220, 130, 20);
+     font-size: 25px;
+     height:60px;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+</style>
+</head>
+<body>
+<ul>
+  <li style="float:right;color:black;font-size: 25px;padding-top: 6px;">tagore degree college(atnomous)</li>
+  <li><a href="#faculty profile">factuly profile</a></li>
+  <li><a href="file:///F:/online%20registration%20ou%20pg%20project/facultycourses_selection.html">course selection</section></section></a></li>
+  <li><a href="file:///F:/online%20registration%20ou%20pg%20project/add%20questions.%2Chtml.html">Make question paper</a></li>
+  <li><a href="#logout">logout</a></li>
+</ul>
+<div class="container">
+<div class="header">
+<h4 style="margin-top:120px;margin-left:100px;font-size:20px;font-family:Georgia, 'Times New Roman', Times, serif;border-bottom: 2px soild black;">faculty profile:</h4>
+</div>
+<form>
+    <img src="C:\Users\RAJESH RATHOD\Desktop\WhatsApp Image 2019-08-01 at 21.06.33.jpeg"  class="avatar"><br><br>
+    <div class="row">
+        <div class="col-25">
+          <label for="fname">First Name:</label><br><br>
+          <input type="text"placeholder="Your name..">
+          <br><br>
+        </div>
+        <div class="col-75">
+            <label>last name:</label><br><br>
+          <input type="text"  placeholder="Your name..">
+          <br><br>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-100">
+            <label>address:</label><br><br> 
+          <input type="text"class="address"placeholder="address..">
+          <br><br>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-100">
+          <label>contact:</label><br><br>
+          <input type="contact" placeholder="enter number..">
+          <br><br>
+        </div>
+        <div class="row">
+            <div class="col-100">
+              <label>Email:</label><br><br>
+              <input type="email"class="email" placeholder="enter Email..">
+              <br><br>
+            </div>
+            </div>
+            <div class="row">
+                <div class="col-100">
+                  <label>select course:</label><br><br>
+                  <input type="text"class="course" placeholder="not selected">
+                  <br><br>
+                </div>
+                </div>
+            <div class="row">
+                <div class="col-25">
+                  <label for="fname">state:</label><br><br>
+                  <input type="text"placeholder="Your name..">
+                  <br><br>
+                </div>
+                <div class="col-75">
+                    <label>city:</label><br><br>
+                  <input type="text"  placeholder="Your name..">
+                  <br><br>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25">
+                    <br><br>
+                    <button type="button" class="Edit">Edit</button>
+                </div>
+                <div class="col-75">
+                    <br><br>
+                    <button type="button" class="save">save</button>
+                </div>
+              </div>
+</form>
+</body>
+</html>
