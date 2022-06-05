@@ -22,35 +22,6 @@
   font-size: 15px;
   font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
-li a:hover{background-color:black;}li a, .dropbtn {
-  display: inline-block;
-  color: whitesmoke;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-li.dropdown {
-  display: inline-block;
-}
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-.dropdown-content a:hover {background-color: #f1f1f1;}
-.dropdown:hover .dropdown-content {
-  display: block;
-}
         </style>
     </head>
     <body>
@@ -59,15 +30,15 @@ li.dropdown {
               <div style="overflow:auto;height:100%;width:100%;position:sticky">
                 <marquee style="background-color: rgb(122, 103, 183);height:30px;padding:5px">online Admission in progress</marquee>
                 <div class="menu">
-                  <a href="file:///F:/online%20registration%20ou%20pg%20project/online%20admission_homepage.html">online Admission</a>
-                  <a href="file:///F:/online%20registration%20ou%20pg%20project/latestnews_homepage.html">Latest news</a>
-                  <a href="file:///F:/online%20registration%20ou%20pg%20project/Announcement_homepage.html">Annocuments</a>
-                  <a href="file:///F:/online%20registration%20ou%20pg%20project/circular_details_home_page.html">circulars</a>
-                  <a href="file:///F:/online%20registration%20ou%20pg%20project/upcoming_events_home_page.html">upcoming events</a>
-                  <a href="file:///F:/online%20registration%20ou%20pg%20project/conferences_home_page.html">conferences</a>
-                  <a href="file:///F:/online%20registration%20ou%20pg%20project/seminars_homepage.html">seminars</a>
-                  <a href="file:///F:/online%20registration%20ou%20pg%20project/workshop_home_page.html">workshops</a>
-                  <a href="file:///F:/online%20registration%20ou%20pg%20project/internship_home_page.html">internships</a>
+                  <a href="{% url 'online-admission' %}">online Admission</a>
+                  <a href="{% url 'latest-news' %}">Latest news</a>
+                  <a href="{% url 'announcements' %}">Annocuments</a>
+                  <a href="{% url 'circulars' %}">circulars</a>
+                  <a href="{% url 'upcoming-events' %}">upcoming events</a>
+                  <a href="{% url 'conferences' %}">conferences</a>
+                  <a href="{% url 'seminars' %}">seminars</a>
+                  <a href="{% url 'workshops' %}">workshops</a>
+                  <a href="{% url 'internships' %}">internships</a>
                 </div>
           </body>
 </html>
