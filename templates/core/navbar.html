@@ -6,12 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+      body{
+        margin:0px;
+      }
         ul{margin:0px;
             padding:0px;
             list-style-type: none;
             background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1));
             overflow:hidden;
-          position:static}
+          position:sticky;
+        top:0px;}
           li{float:right;}
            li a {
           display: block;
@@ -65,12 +69,10 @@
         <li><a href="{% url 'home' %}">Home</a></li>
         <li><a href="{% url 'about' %}">About us</a></li>
         <li><a href="{% url 'student-portal' %}">Student</a></li>
-        <li class="dropdown">
-          <a href="javascript:void(0)" class="dropbtn">faculty</a>
-          <div class="dropdown-content">
-            <a href="file:///F:/online%20registration%20ou%20pg%20project/faculty_details_dashboard.html">faculty details</a>
-            <a href="{% url 'faculty-sign-in' %}">faculty login</a>
-          </div>
+       
+         <li> <a href="{% url 'all-faculty-details' %}">faculty details</a></li>
+          <li>  <a href="{% url 'faculty-sign-in' %}">faculty login</a></li>
+          
         <li><a href="{% url 'admin-portal' %}">Admin</a></li>
         <li><a href="{% url 'all-course-details' %}"> courses</a></ul>
 </body>

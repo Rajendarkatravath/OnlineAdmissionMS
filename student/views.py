@@ -43,7 +43,7 @@ def student_sign_up(request):
             team TDCA!'''
             student_group,created=Group.objects.get_or_create(name='STUDENTS')
             user.groups.add(student_group)
-            send_mail(subject,message,settings.EMAIL_HOST_USER,[email])
+            send_mail(subject,message,settings.EMAIL_HOST_USER,[email],fail_silently=True)
             return HttpResponseRedirect('/student/signin/')
     else:
         student_form=StudentForm()
@@ -69,7 +69,7 @@ def student_sign_in(request):
         return HttpResponseRedirect('/student/dashboard/')
 
 
-@login_required(login_url='student-sign-in',redirect_field_name='next')
+@login_required(login_url='student-sign-in')
 def student_dashboard(request):
     student=Student.objects.get(user=request.user)
     exam_completed=Result.objects.filter(student=student).exists()
@@ -124,6 +124,7 @@ def student_take_to_test(request):
     for question in questions:
         total_marks=question.marks+total_marks
     exam_completed=Result.objects.filter(student=student).exists()
+    
     if exam_completed:
         qualified=exam_qualified(request)
         return render(request,'student/taketotest.html',{'student':student,'examcompleted':exam_completed,'questions':questions,'totalmarks':total_marks,'qualified':qualified})
@@ -181,7 +182,7 @@ def student_calculate_marks(request):
             Incase of any queries,please contact the helpline number 7671959015  or write to us at katravathrajendar18@gmail.com
             Regards,
             team TDCA!'''
-            send_mail(subject,message,settings.EMAIL_HOST_USER,[email])
+            send_mail(subject,message,settings.EMAIL_HOST_USER,[email],fail_silently=True)
         elif result.marks<14:
             message='''Hello Mr.'''+username.title()+'''
             you have attempted the test at  '''+str(date)+'''\n
@@ -192,7 +193,7 @@ def student_calculate_marks(request):
             In case of any queries,please contact the college helpline number 7671959015 or write to us at katravathrajendar18@gmail.com.
             Regrads,
             team TDCA!'''
-            send_mail(subject,message,settings.EMAIL_HOST_USER,[email])
+            send_mail(subject,message,settings.EMAIL_HOST_USER,[email],fail_silently=True)
             
         return HttpResponseRedirect('/student/marksdetails/')
 
@@ -237,6 +238,8 @@ def student_upload_certificates(request):
             if certificate_form.cleaned_data.get('gap_certificate'):
                 gap_certificate=certificate_form.cleaned_data.get('gap_certificate')
             student_certificates=StudentCertificates(student=student,full_name=full_name,permanent_address=permanent_address,aadhar=aadhar,ssc_memo=ssc_memo,ssc_bonafide=ssc_bonafide,inter_memo=inter_memo,inter_bonafide=inter_bonafide,transfer_certificate=transfer_certificate,caste_certificate=caste_certificate,income_certificate=income_certificate,gap_certificate=gap_certificate)
+            student.certificates_uploaded=True
+            student.save()
             student_certificates.save()
             return HttpResponseRedirect('/student/certificatesuploaded/')
     else:

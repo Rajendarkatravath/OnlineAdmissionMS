@@ -1,94 +1,3 @@
-{% comment %} <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        .container{
-            width:60%;
-            height:850px;
-            margin-top: 100px;
-            margin-left:25%;
-            }
-    </style>
-</head>
-<body>
-    {% include 'student/base.html' %}
-    <div class="container">
-        <form class="myform" id="myform" onsubmit="return saveAns()"  action="" method="POST" >
-            {% csrf_token %}
-        {% for q in questions %}
-        
-                <h3><font size="4" color="red">{{ forloop.counter }}. {{q.question}}<h4 style="text-align:right; margin-left:5px;">[{{q.marks}} Marks]</font></h4></h3>
-                <input type="hidden" name="csrfmiddlewaretoken" value="C24rUotmdHawVQJL3KrqiWxvti8UffOFYUc8TRbZtLt36AVLdP3jbkzUVe3beRAa">
-                <input  type="radio"  name="{{ forloop.counter }}" id="{{q.option1}}" value="Option1">
-                <label for="option1">
-                {{q.option1}}<br>
-                </label>
-                <input  type="radio"  name="{{ forloop.counter }}" id="{{q.option2}}" value="Option2">
-                <label for="option2">
-                {{q.option2}}<br>
-                </label>
-                <input  type="radio"   name="{{ forloop.counter }}" id="{{q.option3}}" value="Option3">
-                <label for="option3">
-                {{q.option3}}<br>
-                </label>
-                <input  type="radio" name="{{ forloop.counter }}" id="{{q.option4}}" value="Option4">
-                <label for="option4">
-                {{q.option4}}<br>
-                </label>
-                
-        {% endfor %}
-        <br><br>
-        <input type="submit" class="btn5"value="submit">
-    </div>
-
-<script>
-    
-    var auto_refresh=setInterval(
-        function()
-        {
-            submitform();
-        },10000);
-        function submitform()
-        {
-            alert('test')
-            document.myform.submit();
-        }
-
-    function saveAns(){  
-
-        var ele = document.getElementsByTagName('input'); 
-        for(i = 0; i < ele.length; i++) { 
-            if(ele[i].type="radio") { 
-                if(ele[i].checked){        
-                  setCookie(ele[i].name,ele[i].value,3)
-                }
-            } 
-        } 
-          
-    }
-    
-    function setCookie(cname, cvalue, exdays) {
-  var d = new Date();
-  d.setTime(d.getTime() + (exdays*24*60*60*1000));
-  var expires = "expires="+ d.toUTCString();
-  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-}
-
-
-
-</script> 
-</form>
-
-<br><br><br><br><br><br>
-</body>
-</html> {% endcomment %}
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -96,79 +5,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+      body{font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+margin:0px;}
+p{background-color: #fff;
+display: inline-block;
+float:right;
+align-items: center;
+justify-content: center;
+font-size: 50px;
+margin: 0px;
+height:70px;
+position:sticky;
+top:0px;
+color:red;
+padding:5px;
+width:200px;}
+      .btn{height: 50px;
+        width:200px;
+        color:white;
+        background-color: blueviolet;
+        font-size: 25px;
+        margin-left:40%;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        border:2px solid blueviolet;
+        cursor: pointer;
+        box-shadow: 10px 10px 5px #aaaaaa;
+        }
+    </style>
 </head>
 <body>
-    {% comment %} <form name="myform" id="myform" onsubmit="return saveAns()" action="{% url 'student-calculate-marks' %}" method="post">
-        {% csrf_token %}
-        {% for q in questions %}
-        
-                <h3><font size="4" color="red">{{ forloop.counter }}. {{q.question}}<h4 style="text-align:right; margin-left:5px;">[{{q.marks}} Marks]</font></h4></h3>
-                <input type="hidden" name="csrfmiddlewaretoken" value="C24rUotmdHawVQJL3KrqiWxvti8UffOFYUc8TRbZtLt36AVLdP3jbkzUVe3beRAa">
-                <input  type="radio"   required=true name="{{ forloop.counter }}" id="{{q.option1}}" value="Option1">
-                <label for="option1">
-                {{q.option1}}<br>
-                </label>
-                <input  type="radio"  required=true name="{{ forloop.counter }}" id="{{q.option2}}" value="Option2">
-                <label for="option2">
-                {{q.option2}}<br>
-                </label>
-                <input  type="radio"   required=true  name="{{ forloop.counter }}" id="{{q.option3}}" value="Option3">
-                <label for="option3">
-                {{q.option3}}<br>
-                </label>
-                <input  type="radio"  required=true  name="{{ forloop.counter }}" id="{{q.option4}}" value="Option4">
-                <label for="option4">
-                {{q.option4}}<br>
-                </label>
-                
-        {% endfor %}
-        <br><br>
-        <input type="submit" class="btn5"value="submit">
-        <script>
-            var auto_refresh=setInterval(
-                function()
-                {
-                    submitform();
-                },1000000);
-                function submitform()
-                {
-                    alert('test')
-                    document.myform.submit();
-                }
-
-                function saveAns(){  
-
-                    var ele = document.getElementsByTagName('input'); 
-                    for(i = 0; i < ele.length; i++) { 
-                        if(ele[i].type="radio") { 
-                            if(ele[i].checked){        
-                              setCookie(ele[i].name,ele[i].value,3)
-                            }
-                        } 
-                    } 
-                      
-                }
-                
-                function setCookie(cname, cvalue, exdays) {
-              var d = new Date();
-              d.setTime(d.getTime() + (exdays*24*60*60*1000));
-              var expires = "expires="+ d.toUTCString();
-              document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-            }
-        </script>
-    </form> {% endcomment %}
-
-
-
-
-
-
-
+  <p id="countdown"></p><br>
     <div class="jumbotron my-4">
 
         <form name="myform" id="myform" class="form" autocomplete="off" onsubmit="return saveAns()"  action="/student/calculatemarks/" method="POST">
           {% csrf_token %}
-          <h2 style="text-align: center;">Course: {{course.course_name}}</h2>
+          <h2 style="text-align: center;">Course: {{course.name}}</h2>
           {% for q in questions%}
           <h3 class="text-danger">{{ forloop.counter }}. {{q.question}}</h3><h4 style="text-align: right;">[{{q.marks}} Marks]</h4>
           
@@ -207,19 +79,38 @@
                 </div>
       
               {% endfor %}
-              <input class="btn btn-success btn-lg" style="border-radius: 0%;"  type="submit" value="Submit Answers">  
+              <br>
+              <br>
+              <input class="btn" style="border-radius: 0%;"  type="submit" value="Submit ">  
           
         </div>
       
       <script> 
+      const StartingMinutes=20;
+      let time=StartingMinutes * 60;
+
+      const countdownEl=document.getElementById('countdown')
+      
+      setInterval(updateCountdown,1000);
+
+      function updateCountdown(){
+          const minutes=Math.floor(time / 60);
+          let seconds=time % 60;
+
+          seconds=seconds <10 ? '0'+ seconds :seconds;
+        countdownEl.innerHTML=`${minutes}: ${seconds}`;
+        time--;
+    }
+
+
         var auto_refresh=setInterval(
             function()
             {
                 submitform();
-            },1000000);
+            },2000*60*60);
             function submitform()
             {
-                alert('test')
+                alert('Time Out')
                 document.myform.submit();
                 saveAns();
             }
@@ -246,7 +137,8 @@
         var expires = "expires="+ d.toUTCString();
         document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
       }
-      
+
+
       </script> 
       
 </form>  

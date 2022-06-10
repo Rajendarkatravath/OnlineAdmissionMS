@@ -26,6 +26,7 @@ urlpatterns = [
     path('student_portal/',views.student_portal,name='student-portal'),
     path('adminportal/',views.admin_portal,name='admin-portal'),
     path('allcoursedetails/',views.all_course_details,name='all-course-details'),
+    path('allfacultydetails/',views.all_faculty_details,name='all-faculty-details'),
     path('coursedetails/<int:id>/',views.course_details,name='course-details'),
     path('onlineadmission/',views.online_admission,name='online-admission'),
     path('latestnews/',views.latest_news,name='latest-news'), 
@@ -57,6 +58,7 @@ urlpatterns = [
     path('admin-rejecting-faculty/<int:id>/',views.admin_rejecting_faculty,name='admin-rejecting-faculty'),
     path('admin-pending-faculty/',views.admin_pending_faculty,name='admin-pending-faculty'),
     path('admin-student-details/',views.admin_student_details,name='admin-student-details'),
+    path('admin-view-certificates/<int:id>/',views.admin_view_certificates,name='admin-view-certificates'),
     path('admin-logout/',views.admin_logout,name='admin-logout'),
 
 

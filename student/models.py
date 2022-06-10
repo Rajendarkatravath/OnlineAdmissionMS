@@ -9,6 +9,7 @@ class Student(models.Model):
     address=models.CharField(max_length=100)
     profile_pic=models.ImageField(upload_to='profile_pic/student/',null=False,blank=False)
     course=models.CharField(max_length=40,null=True)
+    certificates_uploaded=models.BooleanField(default=False,null=True)
 
 
 class StudentCertificates(models.Model):
@@ -24,3 +25,4 @@ class StudentCertificates(models.Model):
     caste_certificate=models.ImageField(upload_to='certificates/')
     income_certificate=models.ImageField(upload_to='certificates/')
     gap_certificate=models.ImageField(upload_to='certificates/',null=True,blank=True)
+    

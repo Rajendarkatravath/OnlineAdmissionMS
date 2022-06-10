@@ -57,7 +57,7 @@ text-align: center;}
        <th colspan="6"style="color:white;background-color:black"> student details</th> 
       </tr>
       <tr>
-      <th>sl.no</th> <th> photo</th> <th> student name</th>   <th> course selected</th> <th> exam written  date/time</th>
+      <th>sl.no</th> <th> photo</th> <th> student name</th>   <th> course selected</th> <th> exam written  date/time</th> <th>view certificates</th>
       </tr>
       {% for student in students %}
       <tr >
@@ -67,6 +67,11 @@ text-align: center;}
         
         <td> {{student.student.course}}</td> 
         <td>{{student.date}}</td>  
+        {% if student.student.certificates_uploaded %}
+        <td><a href="{% url 'admin-view-certificates' student.id %}">view certificates</a></td>
+        {% else %}
+        <td>None</td>
+        {% endif %}
       </tr>
       {% endfor %}
 </div>

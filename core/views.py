@@ -3,7 +3,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from exam.models import Course,Result
-from student.models import StudentCertificates
+from student.models import Student, StudentCertificates
 from django.contrib.auth.models import User
 from .models import *
 from .forms import *
@@ -26,6 +26,10 @@ def student_portal(request):
 def all_course_details(request):
     courses=Course.objects.all()
     return render(request,'core/allcoursedetails.html',{'courses':courses})
+
+
+def all_faculty_details(request):
+    return render(request,'core/allfacultydetails.html')
 
 
 def course_details(request,id):
@@ -276,8 +280,15 @@ def admin_rejecting_faculty(request,id):
 
 @login_required(login_url='admin-sign-in')
 def admin_student_details(request):
-    students=Result.objects.filter(marks__gt=4)
+    students=Result.objects.filter(marks__gt=14)
     return render(request,'admin/studentdetails.html',{'students':students})
+
+
+@login_required(login_url='admin-sign-in')
+def admin_view_certificates(request,id):
+    student=Result.objects.get(id=id)
+    student_certificates=StudentCertificates.objects.get(student=student.student)
+    return render(request,'admin/viewcertificates.html',{'studentcertificates':student_certificates})
 
 
 

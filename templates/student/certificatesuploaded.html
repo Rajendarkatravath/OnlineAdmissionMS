@@ -35,14 +35,16 @@ input[type=text] {
   border-radius:4px;
   border:2px solid black;
 }
-
+h1{text-align:center;}
 </style>
 </head>
 <body>
   {% include 'student/base.html' with student=request.user.student %}
     <div class="container">
     <div class="menu">
-        <h2>Upload certificates</h2>
+        <h1>{{request.user}}! you have sucessfully uploaded the certificates.</h1>
+        <h1>soon our team will contact you!</h1>
+        
 
         
     </div>
