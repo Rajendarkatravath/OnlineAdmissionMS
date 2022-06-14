@@ -93,7 +93,7 @@ def student_profile(request):
 def exam_qualified(request):
     student=Student.objects.get(user=request.user)
     result=Result.objects.get(student=student)
-    if result.marks>14:
+    if result.marks>=14:
         return True
     elif result.marks<14:
         return False
@@ -159,8 +159,8 @@ def student_calculate_marks(request):
         for i in range(len(questions)):
             selected_ans = request.COOKIES.get(str(i+1))
             actual_answer = questions[i].answer
-            print('selected ans',selected_ans)
-            print('actual ans',actual_answer)
+            selected_ans=selected_ans.lower()
+            actual_answer=actual_answer.lower()
             if selected_ans==actual_answer:
                 total_marks = total_marks + questions[i].marks
         student = Student.objects.get(user_id=request.user.id)
@@ -205,7 +205,7 @@ def student_marks_details(request):
     student=Student.objects.get(user=request.user)
     result=Result.objects.get(student=student)
     exam_qualification=None
-    if result.marks>14:
+    if result.marks>=14:
         exam_qualification='yes'
     elif result.marks<14:
         exam_qualification='no'

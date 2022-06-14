@@ -56,8 +56,12 @@ padding:20px;}
 <div class="sidebar">
     <center><img src="{{student.profile_pic.url}}" class="profile_image"></center>
     {% if not examcompleted %}
-        <a href="{% url 'student-course-selection' %}">course seletion</a>
+       
+         <a href="{% url 'student-course-selection' %}">course seletion</a>
+      
+      {% if student.course %}
         <a href="{% url 'student-take-to-test' %}">Take to test</a>
+        {% endif %}
     {% endif %}
     {% if examcompleted %}
       <a href="{% url 'student-marks-details' %}">marks details</a>
